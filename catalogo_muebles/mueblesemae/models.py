@@ -1,14 +1,13 @@
 from django.db import models
-#from .models import Mueble
+
 
 # Create your models here.
+
+
+
+##MUEBLES
 class Mueble(models.Model):
     
-    # MUEBLE_NAME ={
-    #     ('Armario', 'Armario'),
-    #     ('Sala de Estar', 'Sala de Estar'),
-    #     ('Cama', 'Cama'),
-    # }
     name = models.CharField(max_length=15, null=False)
     MUEBLE_TYPES = {
         ('A', 'Organizacion'),
@@ -35,5 +34,13 @@ class Mueble(models.Model):
     
     def __str__(self):
         return self.name
+
+class Cliente(models.Model):
+    name = models.CharField(max_length=15, null=False)
+    last_name = models.CharField(max_length=15, null=False)
+    dni = models.IntegerField(null=False, unique=True)
+    email = models.EmailField(max_length=50, null=True)
+    furniture = models.ForeignKey(Mueble, on_delete=models.RESTRICT)
     
-    
+    def __str__(self):
+        return self.name + " " + self.last_name
