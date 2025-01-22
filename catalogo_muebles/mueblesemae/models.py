@@ -1,9 +1,6 @@
 from django.db import models
 
-
 # Create your models here.
-
-
 
 ##MUEBLES
 class Mueble(models.Model):
