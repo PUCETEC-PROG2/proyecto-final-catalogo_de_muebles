@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Mueble
 from .models import Cliente
-
 # Create your views here.
 def index(request):
     muebles = Mueble.objects.all()
