@@ -28,6 +28,7 @@ class Mueble(models.Model):
         ('I', 'Industrial'),
     }
     styles = models.CharField(max_length=30, choices=MUEBLE_STYLES, null=False)
+    picture = models.ImageField(upload_to="muebles_images")
     
     def __str__(self):
         return self.name

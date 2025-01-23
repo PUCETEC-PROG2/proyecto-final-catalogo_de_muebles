@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mueblesemae',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': '123456789',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -132,3 +132,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIR = [
     BASE_DIR / 'stactic'
 ]
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
