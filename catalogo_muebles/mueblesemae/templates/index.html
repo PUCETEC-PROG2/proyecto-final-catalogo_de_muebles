@@ -13,10 +13,20 @@
                 <img class="card-img-top" src="{{mueble.picture.url}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{mueble | capfirst}}</h5>
-                    <p class="card-text">Tipo: {{mueble.materials}}</p>
+                    <p class="card-text">Tipo: {{mueble.type}}</p>
+                    <!--icono VER-->
                     <a href="{{mueble.id}}" class="btn btn-primary">
-                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-eye"></i> <!--icono-->
                     </a>
+                    <!--icono EDITAR-->
+                    <a href="edit_mueble/{{mueble.id}}" class="btn btn-primary">
+                        <i class="fa-solid fa-pen-fancy"></i>
+                    </a>
+                    <!--icono BORRAR-->
+                    <a href="delete_mueble/{{mueble.id}}" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+
                 </div>
             </div>
         </div>        

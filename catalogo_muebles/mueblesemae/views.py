@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
 from mueblesemae.forms import MuebleForm
+
 # Create your views here.
 def index(request):
     muebles = Mueble.objects.all()
@@ -37,6 +38,21 @@ def add_mueble(request):
             form.save()
             return redirect('mueblesemae:index')
     else:
-        form = MuebleForm()
-        
+        form = MuebleForm()        
     return render(request, 'mueble_form.html', {'form': form})
+
+def edit_mueble(request, mueble_id):
+    mueble =  Mueble.objects.get(id = mueble_id)
+    if request.method == "POST": 
+        form = MuebleForm(request.POST, request.FILES, instance=mueble)
+        if form.is_valid():
+            form.save()
+            return redirect('mueblesemae:index')
+    else:
+        form = MuebleForm(instance=mueble)   
+    return render(request, 'mueble_form.html', {'form': form})
+
+def delete_mueble(request, mueble_id):
+    mueble =  Mueble.objects.get(id = mueble_id)
+    mueble.delete()
+    return redirect('mueblesemae:index')    

@@ -15,8 +15,8 @@ class MuebleForm(forms.ModelForm):
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'type': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}),
-            'style': forms.TextInput(attrs={'class': 'form-control'}),
+            'type': forms.Select(attrs={'class': 'form-control'}),
+            'material': forms.Select(attrs={'class': 'form-control'}),
+            'style': forms.Select(attrs={'class': 'form-control'}),
             'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
