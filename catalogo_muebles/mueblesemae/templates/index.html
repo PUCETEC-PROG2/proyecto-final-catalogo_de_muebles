@@ -3,13 +3,11 @@
 
 {% block content %}
     <h2>Muebles</h2>
-    <a href="{% url "mueblesemae:add_mueble" %}">agregar</a>
-
     <div class="row">
         {% for mueble  in muebles  %}
         <div class="col-sm-3">
             <br>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img class="card-img-top" src="{{mueble.picture.url}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{mueble | capfirst}}</h5>
@@ -19,14 +17,15 @@
                         <i class="fa-solid fa-eye"></i> <!--icono-->
                     </a>
                     <!--icono EDITAR-->
-                    <a href="edit_mueble/{{mueble.id}}" class="btn btn-primary">
-                        <i class="fa-solid fa-pen-fancy"></i>
-                    </a>
-                    <!--icono BORRAR-->
-                    <a href="delete_mueble/{{mueble.id}}" class="btn btn-danger">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </a>
-
+                    {% if user.is_authenticated %}
+                        <a href="edit_mueble/{{mueble.id}}" class="btn btn-primary">
+                            <i class="fa-solid fa-pen-fancy"></i>
+                        </a>
+                        <!--icono BORRAR-->
+                        <a href="delete_mueble/{{mueble.id}}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    {% endif %} 
                 </div>
             </div>
         </div>        

@@ -4,6 +4,9 @@ from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
 from mueblesemae.forms import MuebleForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -31,6 +34,7 @@ def cliente_details(request, cliente_id):
     }
     return HttpResponse(template.render(context, request))
 
+@login_required
 def add_mueble(request):
     if request.method == "POST": 
         form = MuebleForm(request.POST, request.FILES)
@@ -55,4 +59,9 @@ def edit_mueble(request, mueble_id):
 def delete_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
     mueble.delete()
-    return redirect('mueblesemae:index')    
+    return redirect('mueblesemae:index')
+
+
+#login creado
+class CustomLoginView(LoginView):
+    template_name = "login_form.html"
