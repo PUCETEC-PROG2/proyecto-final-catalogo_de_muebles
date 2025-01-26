@@ -3,11 +3,23 @@
     max-width: 1300px;
     margin: 0 auto;
 }
+.header{
+    background-color: #e4b46a; 
+    position: fixed;
+    width: 100%;
+    height: 30%;
+    z-index: 1030;
+    border-radius: 0.9rem;
+}
+.main{
+    padding-top: 15rem;
+}
 
 .logo{
     width: 100%;
-    height: 30%;
-    margin: 0%;
+    height: 70%;
+    margin-left: 0%;
+    padding: 0%;
 }
 
 ul.lista-h{
@@ -21,8 +33,8 @@ ul.lista-h{
 
 }
 div.barra.p-0{
-    background-color: #e4b46a; 
-
+    background: #e4b46a;
+    
 
 }
 div.barra.p-0 ul li{
@@ -31,13 +43,17 @@ div.barra.p-0 ul li{
     margin-bottom: 0;
 
 }
+div.barra.p-0 ul li :hover{
+    background: rgba(255, 255, 255, 0.629);
+    border-radius: 0.4rem;
+    transition: all 0.3s linear;
+}
 
-
-.navbar-toggler-icon {
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28155, 155, 155, 1%29" stroke-width="4" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
-    background-color: #04040424;
-    border-radius: 0.3rem;
-    padding: 0%;
+.footer{
+    background: #ddb94d24;
+    padding: 0.4rem 0;
+    text-align: center;
+    margin-top: 6rem;
 }
 
 

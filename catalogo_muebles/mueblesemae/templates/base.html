@@ -14,13 +14,13 @@
 </head>
 <body>
     <header class="header">
+        <img class="logo" src="{% static "mueblesemaetitlefondo1.png" %}" alt="mueblesemaetitlefondo1.png">
         <div class="container">
-            <img class="logo" src="{% static "mueblesemaetitlefondo1.png" %}" alt="mueblesemaetitlefondo1.png">
-
             <!-- barra navegacio -->
             <nav class="navbar">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="barra_navegacion" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="collapse "  id="barra_navegacion" style="transition: all 0.8s linear">
                     <div class="barra p-0">
@@ -42,9 +42,9 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    listas
+                                    Listas
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -83,5 +83,14 @@
             {% block content %}{% endblock content %}
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Desarrollado por @Elizabeth</p>
+            <p>Desarrollado por @Armando</p>
+
+        </div>
+
+    </footer>
 </body>
 </html>
