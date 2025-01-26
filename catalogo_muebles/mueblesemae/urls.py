@@ -1,10 +1,12 @@
 from django.urls import path
 #impotamos viewa
 from . import views
+app_name = 'mueblesemae'
 
 urlpatterns = [
     path("", views.index, name="index"),
     path("<int:mueble_id>/", views.mueble, name="mueble"),
-    path("cliente/<int:cliente_id>/", views.cliente_details, name="cliente_details")   
+    path("cliente/<int:cliente_id>/", views.cliente_details, name="cliente_details"),
+    path("add_mueble/", views.add_mueble, name="add_mueble"),
 ]
 

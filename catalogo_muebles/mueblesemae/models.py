@@ -14,20 +14,20 @@ class Mueble(models.Model):
     type = models.CharField(max_length=30, choices=MUEBLE_TYPES, null=False)
     MUEBLE_MATERIALS = {
         ('M', 'Madera Sostenible'),
-        ('B', 'Bambu'),
+        ('Bambu', 'B'),
         ('E', 'Eco-plasticos'),
         ('C', 'Corcho'),
         ('LO', 'Lino Orgonico'),
         ('FC', 'Fibras de Coco'),    
     }
-    materials = models.CharField(max_length=30, choices=MUEBLE_MATERIALS, null=False)
+    material = models.CharField(max_length=30, choices=MUEBLE_MATERIALS, null=False)
     MUEBLE_STYLES = {
         ('M', 'Minimalista'),
         ('MU', 'Multifuncionales'),
         ('S', 'Sostenibles'),
         ('I', 'Industrial'),
     }
-    styles = models.CharField(max_length=30, choices=MUEBLE_STYLES, null=False)
+    style = models.CharField(max_length=30, choices=MUEBLE_STYLES, null=False)
     picture = models.ImageField(upload_to="muebles_images")
     
     def __str__(self):

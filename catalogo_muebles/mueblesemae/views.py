@@ -1,8 +1,9 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
+from mueblesemae.forms import MuebleForm
 # Create your views here.
 def index(request):
     muebles = Mueble.objects.all()
@@ -28,3 +29,14 @@ def cliente_details(request, cliente_id):
         'cliente': cliente
     }
     return HttpResponse(template.render(context, request))
+
+def add_mueble(request):
+    if request.method == "POST": 
+        form = MuebleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('mueblesemae:index')
+    else:
+        form = MuebleForm()
+        
+    return render(request, 'mueble_form.html', {'form': form})

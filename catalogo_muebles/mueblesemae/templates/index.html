@@ -3,27 +3,25 @@
 
 {% block content %}
     <h2>Muebles</h2>
-        <div class="row">
-            {% for mueble  in muebles  %}
-            <div class="col-sm-3">
-                <a href="{{mueble.id}}">{{mueble | capfirst}}</a>
+    <a href="{% url "mueblesemae:add_mueble" %}">agregar</a>
 
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{mueble.picture.url}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+    <div class="row">
+        {% for mueble  in muebles  %}
+        <div class="col-sm-3">
+            <br>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{mueble.picture.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{mueble | capfirst}}</h5>
+                    <p class="card-text">Tipo: {{mueble.materials}}</p>
+                    <a href="{{mueble.id}}" class="btn btn-primary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
                 </div>
-
-
-
             </div>
-    
-            {% endfor %}
-        </div>
+        </div>        
+        {% endfor %}
+    </div>
 
     <!--cliente-->
     <br>
