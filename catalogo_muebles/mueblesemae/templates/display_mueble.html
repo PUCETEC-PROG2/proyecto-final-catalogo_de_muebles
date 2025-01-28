@@ -5,8 +5,8 @@
     <h2>Caracteristicas</h2>
     <ul>
         <li>Nombre: {{mueble.name}}</li>
-        <li>Tipo: {{mueble.type}}</li>
-        <li>Material: {{mueble.material}}</li>
-        <li>Estilo: {{mueble.style}}</li>
+        <li>Tipo: {{mueble.get_type_furniture_display}}</li>
+        <li>Material: {{mueble.get_material_display}}</li>
+        <li>Estilo: {{mueble.get_style_display}}</li>
     </ul>
 {% endblock content %}

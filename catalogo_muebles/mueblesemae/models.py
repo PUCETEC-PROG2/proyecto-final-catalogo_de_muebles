@@ -5,15 +5,18 @@ from django.db.models import  Q
 
 ##MUEBLES
 class Tipo_mueble(models.Model):
-    MUEBLE_TYPES = (
-    ('O', 'Organizacion'),
-    ('H', 'Hool'),
-    ('C', 'Confort'),
-    )
-    type = models.CharField(max_length=30, null=False, choices=MUEBLE_TYPES)
+    type_furniture = models.CharField(max_length=30, null=False)
+    
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                check=models.Q(type_furniture__in=['Organizacion', 'Hool', 'Confort']),
+                name='check_types_furniture'
+            ),
+        ]
         
     def __str__(self):
-        return self.type
+        return self.type_furniture
     
 class Mueble(models.Model):
     name = models.CharField(max_length=15, null=False)
