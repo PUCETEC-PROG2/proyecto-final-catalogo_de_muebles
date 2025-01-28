@@ -1,34 +1,42 @@
 from django.db import models
+from django.db.models import  Q
 
 # Create your models here.
 
 ##MUEBLES
-class Mueble(models.Model):
+class Tipo_mueble(models.Model):
+    MUEBLE_TYPES = (
+    ('O', 'Organizacion'),
+    ('H', 'Hool'),
+    ('C', 'Confort'),
+    )
+    type = models.CharField(max_length=30, null=False, choices=MUEBLE_TYPES)
+        
+    def __str__(self):
+        return self.type
     
+class Mueble(models.Model):
     name = models.CharField(max_length=15, null=False)
-    MUEBLE_TYPES = {
-        ('A', 'Organizacion'),
-        ('H', 'Hool/Entrada'),
-        ('B', 'Confort'),
-    }
-    type = models.CharField(max_length=30, choices=MUEBLE_TYPES, null=False)
-    MUEBLE_MATERIALS = {
+    MUEBLE_MATERIALS = (
         ('M', 'Madera Sostenible'),
-        ('Bambu', 'B'),
+        ('B', 'Bambu'),
         ('E', 'Eco-plasticos'),
         ('C', 'Corcho'),
-        ('LO', 'Lino Orgonico'),
-        ('FC', 'Fibras de Coco'),    
-    }
-    material = models.CharField(max_length=30, choices=MUEBLE_MATERIALS, null=False)
-    MUEBLE_STYLES = {
+        ('L', 'Lino Orgonico'),
+        ('F', 'Fibras de Coco'),    
+    )
+    material = models.CharField(max_length=30, null=False, choices=MUEBLE_MATERIALS)
+    MUEBLE_STYLES = (
         ('M', 'Minimalista'),
-        ('MU', 'Multifuncionales'),
+        ('M', 'Multifuncionales'),
         ('S', 'Sostenibles'),
         ('I', 'Industrial'),
-    }
-    style = models.CharField(max_length=30, choices=MUEBLE_STYLES, null=False)
+    )
+    style = models.CharField(max_length=30, null=False, choices=MUEBLE_STYLES)
+    cost = models.DecimalField(decimal_places = 4, max_digits = 6, null=False, default=0)
+    
     picture = models.ImageField(upload_to="muebles_images")
+    type = models.ForeignKey(Tipo_mueble, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
@@ -42,3 +50,4 @@ class Cliente(models.Model):
     
     def __str__(self):
         return self.name + " " + self.last_name
+    

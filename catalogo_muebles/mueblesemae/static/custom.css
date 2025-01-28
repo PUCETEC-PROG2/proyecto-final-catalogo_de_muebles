@@ -1,42 +1,35 @@
+
 .container{
-    width: 130%;
-    max-width: 1300px;
+    width: 100%;
+    max-width: 1200px;  /* Limita el tamaño máximo */
     margin: 0 auto;
 }
 .header{
-    background-color: #e4b46a; 
     position: fixed;
-    width: 100%;
-    height: 30%;
+    height: 18rem;
     z-index: 1030;
-    border-radius: 0.9rem;
+    left: 0;
+    top: 0;
+    right: 0;
 }
 .main{
-    padding-top: 15rem;
+    padding-top: calc(17rem + 1rem); 
 }
-
 .logo{
-    width: 100%;
-    height: 70%;
-    margin-left: 0%;
-    padding: 0%;
-}
+    width: 100%;    /* Mantiene la proporción */
+    position: sticky;
+    max-width: 3000px;
+    height: auto;
+    max-height: 14rem;
+    padding: 0rem;
+} 
 
 ul.lista-h{
     margin-bottom: 0;
     list-style: none;
-
-}
-.navbar{
-    background-color: #e4b46a; 
-
-
-}
-div.barra.p-0{
-    background: #e4b46a;
     
-
 }
+
 div.barra.p-0 ul li{
     display: inline-block;
     padding: 0rem 1rem;
@@ -46,7 +39,7 @@ div.barra.p-0 ul li{
 div.barra.p-0 ul li :hover{
     background: rgba(255, 255, 255, 0.629);
     border-radius: 0.4rem;
-    transition: all 0.3s linear;
+
 }
 
 .footer{
@@ -55,7 +48,11 @@ div.barra.p-0 ul li :hover{
     text-align: center;
     margin-top: 6rem;
 }
+.header, .navbar, div.barra.p-0{
+    background-color: #e4b46a;
+    border-radius: 0.9rem;
 
+}
 
 /* Estilo base */
 html {
