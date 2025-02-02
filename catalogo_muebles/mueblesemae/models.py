@@ -3,21 +3,7 @@ from django.db.models import  Q
 
 # Create your models here.
 
-##MUEBLES
-class Tipo_mueble(models.Model):
-    type_furniture = models.CharField(max_length=30, null=False)
-    
-    class Meta:
-        constraints = [
-            models.CheckConstraint(
-                check=models.Q(type_furniture__in=['Organizacion', 'Hool', 'Confort']),
-                name='check_types_furniture'
-            ),
-        ]
-        
-    def __str__(self):
-        return self.type_furniture
-    
+##MUEBLES    
 class Mueble(models.Model):
     name = models.CharField(max_length=15, null=False)
     MUEBLE_MATERIALS = (
@@ -35,11 +21,15 @@ class Mueble(models.Model):
         ('S', 'Sostenibles'),
         ('I', 'Industrial'),
     )
-    style = models.CharField(max_length=30, null=False, choices=MUEBLE_STYLES)
+    style = models.CharField(max_length=30, null = False, choices = MUEBLE_STYLES)
     cost = models.DecimalField(decimal_places = 4, max_digits = 6, null=False, default=0)
-    
     picture = models.ImageField(upload_to="muebles_images")
-    type = models.ForeignKey(Tipo_mueble, on_delete=models.CASCADE)
+    MUEBLE_TYPE = (
+        ('O', 'Organizacion'),
+        ('H', 'Hool'),
+        ('C', 'Confort'),   
+    )
+    type = models.CharField(max_length=30, null=False, choices=MUEBLE_TYPE)
     
     def __str__(self):
         return self.name
@@ -48,8 +38,13 @@ class Cliente(models.Model):
     name = models.CharField(max_length=15, null=False)
     last_name = models.CharField(max_length=15, null=False)
     dni = models.IntegerField(null=False, unique=True)
-    email = models.EmailField(max_length=50, null=True)
-    furniture = models.ForeignKey(Mueble, on_delete=models.RESTRICT)
+    email = models.EmailField(max_length=50, null=True) 
+    #genero
+    CLIENTE_GENDER = (
+        ('M', 'Masculino'),
+        ('F', 'Femenino'),
+    )
+    gender = models.CharField(max_length=15, null=False, choices=CLIENTE_GENDER)
     
     def __str__(self):
         return self.name + " " + self.last_name

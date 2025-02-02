@@ -4,19 +4,22 @@ from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
 from mueblesemae.forms import MuebleForm
+from mueblesemae.forms import ClienteForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 def index(request):
     muebles = Mueble.objects.all()
-    clientes = Cliente.objects.all()
     template = loader.get_template('index.html')
     return HttpResponse(template.render({
         'muebles': muebles,
-        'clientes': clientes
         }, request))
+
+
 
 def mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
@@ -26,6 +29,11 @@ def mueble(request, mueble_id):
     }
     return HttpResponse(template.render(context, request))
 
+def clientes(request):    
+    clientes = Cliente.objects.all()
+    template = loader.get_template('cliente_list.html')
+    return HttpResponse(template.render({'clientes': clientes}, request))
+
 def cliente_details(request, cliente_id):
     cliente = Cliente.objects.get(id = cliente_id)
     template = loader.get_template('display_cliente.html')
@@ -34,6 +42,35 @@ def cliente_details(request, cliente_id):
     }
     return HttpResponse(template.render(context, request))
 
+#CLIENTE
+def add_cliente(request):
+    if request.method == "POST": 
+        form = ClienteForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('mueblesemae:clientes')
+    else:
+        form = ClienteForm()        
+    return render(request, 'cliente_form.html', {'form': form})
+
+def edit_cliente(request, cliente_id):
+    cliente =  Cliente.objects.get(id = cliente_id)
+    if request.method == "POST": 
+        form = ClienteForm(request.POST, request.FILES, instance=cliente)
+        if form.is_valid():
+            form.save()
+            return redirect('mueblesemae:clientes')
+    else:
+        form = ClienteForm(instance=cliente)   
+    return render(request, 'cliente_form.html', {'form': form})
+
+def delete_cliente(cliente_id):
+    cliente =  Cliente.objects.get(id = cliente_id)
+    cliente.delete()
+    return redirect('mueblesemae:clientes')
+
+
+#MUEBLE
 @login_required
 def add_mueble(request):
     if request.method == "POST": 
@@ -60,6 +97,7 @@ def delete_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
     mueble.delete()
     return redirect('mueblesemae:index')
+
 
 
 #login creado

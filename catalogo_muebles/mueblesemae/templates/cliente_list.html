@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Pagina Inicial{% endblock title %}
+
+{% block content %}
+    <h2>Clientes</h2>
+    <div class="row">
+        {% for cliente  in clientes  %}
+        <div class="col-sm-3">
+            <br>
+            <div class="card">
+                {% if cliente.gender == "F" %}
+                    <img class="card-img-top" src="https://st2.depositphotos.com/9998432/48297/v/950/depositphotos_482974560-stock-illustration-default-avatar-photo-placeholder-grey.jpg" alt="Card image cap">
+                {% elif cliente.gender == "M" %}
+                    <img class="card-img-top" src="https://hausverwaltungbaum.de/wp-content/uploads/2023/03/platzhalter_mann-400x412.jpg" alt="Card image cap">
+
+                {% endif %}
+                {% comment %} <img class="card-img-top" src="{{clientes.picture.url}}" alt="Card image cap"> {% endcomment %}
+                <div class="card-body">
+                    <h5 class="card-title">{{cliente | capfirst}}</h5>
+                    <p class="card-text">Cedula: {{cliente.dni}} </p>
+                    <!--icono VER-->
+                    <a href="/cliente/{{cliente.id}}" class="btn btn-primary">
+                        <i class="fa-solid fa-eye"></i> <!--icono-->
+                    </a>
+                    <!--icono EDITAR-->
+                    {% if user.is_authenticated %}
+                        <a href="/edit_cliente/{{cliente.id}}" class="btn btn-primary">
+                            <i class="fa-solid fa-pen-fancy"></i>
+                        </a>
+                        <!--icono BORRAR-->
+                        <a href="/delete_cliente/{{cliente.id}}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    {% endif %} 
+                </div>
+            </div>
+        </div>        
+        {% endfor %}
+    </div>
+
+    <!--cliente-->
+    <br>
+    
+{% endblock content %}
