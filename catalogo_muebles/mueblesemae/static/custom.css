@@ -60,6 +60,7 @@ div.barra.p-0 ul li :hover{
 .navbar{
     background-color: #f3e7c061;
     height: 4rem;
+    text-align: center;
 }
 i.fa-solid.fa-bars{
     font-size: 2rem;
