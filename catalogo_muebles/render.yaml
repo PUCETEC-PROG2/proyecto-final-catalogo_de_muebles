@@ -1,19 +1,19 @@
 databases:
-  - name: mysitedb
+  - name: mueblesemae
     plan: free
-    databaseName: mysite
-    user: mysite
+    databaseName: mueblesemae
+    user: postgres
 
 services:
   - type: web
     plan: free
-    name: mysite
+    name: mueblesemae
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"    envVars:
+    startCommand: "python -m gunicorn mueblesemae.asgi:application -k uvicorn.workers.UvicornWorker"    envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysitedb
+          name: mueblesemae
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
