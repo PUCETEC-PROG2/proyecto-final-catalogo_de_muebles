@@ -34,6 +34,12 @@ def clientes(request):
     template = loader.get_template('cliente_list.html')
     return HttpResponse(template.render({'clientes': clientes}, request))
 
+#TABLA CLIENTE
+def cliente_tabla(request):    
+    clientes = Cliente.objects.all()
+    template = loader.get_template('cliente_tabla.html')
+    return HttpResponse(template.render({'clientes': clientes}, request))
+
 def cliente_details(request, cliente_id):
     cliente = Cliente.objects.get(id = cliente_id)
     template = loader.get_template('display_cliente.html')
@@ -64,7 +70,7 @@ def edit_cliente(request, cliente_id):
         form = ClienteForm(instance=cliente)   
     return render(request, 'cliente_form.html', {'form': form})
 
-def delete_cliente(cliente_id):
+def delete_cliente(request, cliente_id):
     cliente =  Cliente.objects.get(id = cliente_id)
     cliente.delete()
     return redirect('mueblesemae:clientes')
@@ -97,6 +103,8 @@ def delete_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
     mueble.delete()
     return redirect('mueblesemae:index')
+
+
 
 
 

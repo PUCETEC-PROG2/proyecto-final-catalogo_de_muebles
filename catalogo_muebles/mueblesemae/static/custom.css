@@ -51,8 +51,23 @@ div.barra.p-0 ul li :hover{
 .header, .navbar, div.barra.p-0{
     background-color: #e4b46a;
     border-radius: 0.9rem;
+    
 
 }
+.table thead.atributes{
+    background: #0000002e;
+}
+.navbar{
+    background-color: #f3e7c061;
+    height: 4rem;
+}
+i.fa-solid.fa-bars{
+    font-size: 2rem;
+}
+i.fa-regular.fa-id-card{
+    font-size: 1.7rem;
+}
+
 
 /* Estilo base */
 html {
