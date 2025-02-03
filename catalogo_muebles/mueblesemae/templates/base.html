@@ -26,23 +26,27 @@
                     <div class="barra p-0">
                         <ul class="lista-h"> 
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url "mueblesemae:index" %}">Muebles</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <!--CLIENTE ICON-->
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-regular fa-id-card"></i>
+                                <!--home-->
+                                <a class="nav-link" href="{% url "mueblesemae:index" %}">
+                                    <i class="fa-solid fa-house-chimney"></i>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{% url "mueblesemae:clientes" %}">Cliente Tarjeta</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url "mueblesemae:cliente_tabla" %}">Cliente Tabla</a>
-                                    </li>
-                                </ul>
                             </li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item dropdown">
+                                    <!--CLIENTE ICON-->
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-regular fa-id-card"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li class="nav-item">
+                                            <a class="dropdown-item" href="{% url "mueblesemae:clientes" %}">Cliente Tarjeta</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url "mueblesemae:cliente_tabla" %}">Cliente Tabla</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Listas
