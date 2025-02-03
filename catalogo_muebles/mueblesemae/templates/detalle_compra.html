@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Pagina Inicial{% endblock title %}
+
+{% block content %}
+    <h2>Compra</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_div}}
+        <br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url "mueblesemae:clientes"  %}" class="btn btn-secondary">Regresar</a>
+    </form>
+    
+{% endblock content %}

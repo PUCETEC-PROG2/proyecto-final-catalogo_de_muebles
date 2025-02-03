@@ -3,8 +3,12 @@ from django.template import loader
 from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
+from .models import Compra
+from .models import DetalleCompra
 from mueblesemae.forms import MuebleForm
 from mueblesemae.forms import ClienteForm
+from mueblesemae.forms import CompraForm
+from mueblesemae.forms import DetalleCompraForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -33,6 +37,22 @@ def clientes(request):
     clientes = Cliente.objects.all()
     template = loader.get_template('cliente_list.html')
     return HttpResponse(template.render({'clientes': clientes}, request))
+
+#COMPRA
+def compra(request):
+    compra = Compra.objects.all()
+    form = CompraForm()
+    template = loader.get_template('compra_form.html')
+    return HttpResponse(template.render({'form': form}, request))
+
+def details_compra(request):
+    details_compra = DetalleCompra.objects.all()
+    form = DetalleCompraForm()
+    template = loader.get_template('detalle_compra.html')
+    return HttpResponse(template.render({'form': form }, request))
+
+ 
+
 
 #TABLA CLIENTE
 def cliente_tabla(request):    
@@ -103,6 +123,8 @@ def delete_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
     mueble.delete()
     return redirect('mueblesemae:index')
+
+
 
 
 

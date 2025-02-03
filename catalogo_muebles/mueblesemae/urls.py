@@ -9,6 +9,9 @@ urlpatterns = [
     path("cliente_tabla/", views.cliente_tabla, name="cliente_tabla"),
     path("<int:mueble_id>/", views.mueble, name="mueble"),
     path("cliente/<int:cliente_id>/", views.cliente_details, name="cliente_details"),
+    #compra
+    path("compra/", views.compra, name="compra"),
+    path("detalle_compra/", views.details_compra, name="detalle_compra"),
     path("add_mueble/", views.add_mueble, name="add_mueble"),
     path("edit_mueble/<int:mueble_id>/", views.edit_mueble, name="edit_mueble"),
     path("delete_mueble/<int:mueble_id>/", views.delete_mueble, name="delete_mueble"),

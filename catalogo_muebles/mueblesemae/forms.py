@@ -1,6 +1,8 @@
 from django import forms
 from .models import Mueble
 from .models import Cliente
+from .models import DetalleCompra
+from .models import Compra
 
 class MuebleForm(forms.ModelForm):
     class Meta:
@@ -39,4 +41,28 @@ class ClienteForm(forms.ModelForm):
             'dni': forms.NumberInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={"class": 'form-control'}),
             'gender' : forms.Select(attrs={'class': 'form-control'}),
+        }
+
+class CompraForm(forms.ModelForm):
+    class Meta:
+        model = Compra
+        fields = '__all__'
+        labels = {
+            'cliente': 'Cliente',
+            'fecha': 'Fecha',
+            'cost': 'Precio'
+        }
+        widgets = {
+            'cliente': forms.Select(attrs={'class': 'form-control'}),
+            'fecha': forms.DateInput(attrs={'class': 'form-control'}),
+            'cost': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+class DetalleCompraForm(forms.ModelForm):
+    class Meta:
+        model = DetalleCompra
+        fields = '__all__'
+        widgets = {
+            'mueble': forms.Select(attrs={'class': 'form-control'}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
         }
