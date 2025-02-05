@@ -49,3 +49,25 @@ class Cliente(models.Model):
     def __str__(self):
         return self.name + " " + self.last_name
     
+#tabla compra relacional
+class Compra(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    # mueble = models.ForeignKey(Mueble, on_delete=models.CASCADE) 
+    fecha = models.DateField()
+    cantidad = models.IntegerField(null=False, default=0)
+    muebles = models.ManyToManyField(Mueble)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    
+    def calcular_total(self):
+        total = sum(mueble.cost for mueble in self.muebles.all())
+        self.total = total
+        self.save()
+    
+    def __str__(self):
+        return f"Compra {self.id} - {self.muebles.name}"
+    
+    
+    
+    
+    
+    

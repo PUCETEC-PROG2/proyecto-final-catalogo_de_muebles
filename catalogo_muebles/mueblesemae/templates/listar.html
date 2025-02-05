@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}MUEBLESEMAE{% endblock title %}
+
+{% block content %}
+    <h2>lista de compras</h2>
+    <div class="row">
+        <div>
+            Fecha: {{ compra.fecha }}
+        </div>
+        <table class="table">
+            <thead class="atributes">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">PRODUCTO</th>
+                    <th scope="col">CATEGORIA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for compra  in compras  %}
+
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            {% for mueble in compra.muebles.all %}
+                                {{ mueble.id }}
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+
+                        <td>
+                            {% for mueble in compra.muebles.all %}
+                                {{ mueble.name }}
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+
+                        <td>
+                            {% for mueble in compra.muebles.all %}
+                                {{ mueble.get_type_display }}
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No hay compras registrados.</td>
+                    </tr>
+
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        <div>
+            <a href="#">Ver Detalles</a>
+        </div>
+        <br>
+        <p>
+            Total: ${{ compra.total }}
+        </p>
+
+    </div>
+
+    <!--cliente-->
+    <br>
+    
+{% endblock content %}

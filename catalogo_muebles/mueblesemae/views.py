@@ -3,8 +3,12 @@ from django.template import loader
 from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
+from .models import Compra
+
 from mueblesemae.forms import MuebleForm
 from mueblesemae.forms import ClienteForm
+from mueblesemae.forms import CompraForm
+
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -49,6 +53,7 @@ def cliente_details(request, cliente_id):
     return HttpResponse(template.render(context, request))
 
 #CLIENTE
+@login_required
 def add_cliente(request):
     if request.method == "POST": 
         form = ClienteForm(request.POST, request.FILES)
@@ -103,6 +108,27 @@ def delete_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
     mueble.delete()
     return redirect('mueblesemae:index')
+
+
+#COMPRA- listado de compra
+def listar_compras(request):
+    compras = Compra.objects.all().order_by('-fecha')
+    template = loader.get_template('listar.html')
+    return HttpResponse(template.render({'compras': compras}, request))
+
+#COMPRA- nueva compra
+def nueva_compra(request):
+    if request.method == 'POST':
+        form = CompraForm(request.POST)
+        if form.is_valid():
+            compra = form.save()
+            compra.calcular_total()
+            return redirect('mueblesemae:listar_compras')
+    else:
+        form = CompraForm()
+    
+    return render(request, 'nueva.html', {'form': form})
+
 
 
 
