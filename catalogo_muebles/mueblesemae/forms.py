@@ -52,6 +52,7 @@ class CompraForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True
     )
+    
 
     class Meta:
         model = Compra

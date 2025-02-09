@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title  %} Ingreso nueva compra {% endblock title  %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+
+        <div class="mb-3">
+            <label for="id_cliente">Cliente:</label>
+            {{ form.cliente }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_fecha">Fecha:</label>
+            {{ form.fecha }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_cantidad">Cantidad:</label>
+            {{ form.cantidad }}
+        </div>
+
+        <br>
+        <table class="table">
+            <thead class="atributes">
+                <tr>
+                    <th scope="col">Seleccionar</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mueble in form.muebles.field.queryset %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="{{ form.muebles.html_name }}" value="{{ mueble.id }}"
+                                {% if mueble in form.muebles.value %}checked{% endif %}>
+                        </td>
+                        <td>{{ mueble.id }}</td>
+                        <td>{{ mueble.name }}</td>
+                        <td>{{ mueble.get_type_display }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url "mueblesemae:listar_compras"  %}" class="btn btn-secondary">Regresar</a>
+    </form>
+{% endblock content %}
+
+
+
+
+
+

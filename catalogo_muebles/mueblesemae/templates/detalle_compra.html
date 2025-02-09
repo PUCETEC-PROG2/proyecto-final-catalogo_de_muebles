@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{cliente | capfirst}}{% endblock title %}
+{% block content %}
+    <p>{{cliente}}</p>
+    <h2>Detalles de la compra:</h2>
+    <p>Cliente: {{cliente.name}}</p>
+
+    <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+        <table class="table">
+            <thead class="atributes">
+                <tr>
+                    <th scope="col">mueble</th>
+                    <th scope="col">categoria</th>
+                    <th scope="col">precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mueble in form.muebles.field.queryset %}
+
+                    <tr>
+                        <td>{{ mueble.name }}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </form>
+{% endblock content %}

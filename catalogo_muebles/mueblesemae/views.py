@@ -113,11 +113,12 @@ def delete_mueble(request, mueble_id):
 #COMPRA- listado de compra
 def listar_compras(request):
     compras = Compra.objects.all().order_by('-fecha')
-    template = loader.get_template('listar.html')
+    template = loader.get_template('lista_compras.html')
     return HttpResponse(template.render({'compras': compras}, request))
 
+
 #COMPRA- nueva compra
-def nueva_compra(request):
+def ingresar_compra(request):
     if request.method == 'POST':
         form = CompraForm(request.POST)
         if form.is_valid():
@@ -127,7 +128,12 @@ def nueva_compra(request):
     else:
         form = CompraForm()
     
-    return render(request, 'nueva.html', {'form': form})
+    return render(request, 'ingresar_compra.html', {'form': form})
+
+def detalle_compra(request):
+    detalle_compra = Compra.objects.all()
+    template = loader.get_template('detalle_compra.html')
+    return HttpResponse(template.render({'detalle_compra': detalle_compra}, request))
 
 
 

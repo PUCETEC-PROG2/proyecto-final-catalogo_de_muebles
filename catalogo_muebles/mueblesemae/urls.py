@@ -19,8 +19,11 @@ urlpatterns = [
     path("delete_cliente/<int:cliente_id>/", views.delete_cliente, name="delete_cliente"),
     path("login/", views.CustomLoginView.as_view(), name="login"),
     #compras
-    path("nueva_compra/", views.nueva_compra, name="nueva_compra"),
+    path("ingresar_compra/", views.ingresar_compra, name="ingresar_compra"),
     path("listar_compras/", views.listar_compras, name="listar_compras"),
+    #DETALLE COMPRA
+    path("detalle_compra/", views.detalle_compra, name="detalle_compra"),
+    
     
     
 ]

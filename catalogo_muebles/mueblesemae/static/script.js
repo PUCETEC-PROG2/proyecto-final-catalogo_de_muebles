@@ -1,0 +1,3 @@
+function compra_toral(){
+    
+}
