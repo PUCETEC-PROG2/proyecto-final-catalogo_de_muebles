@@ -11,8 +11,7 @@ from mueblesemae.forms import CompraForm
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
@@ -130,10 +129,18 @@ def ingresar_compra(request):
     
     return render(request, 'ingresar_compra.html', {'form': form})
 
-def detalle_compra(request):
-    detalle_compra = Compra.objects.all()
-    template = loader.get_template('detalle_compra.html')
-    return HttpResponse(template.render({'detalle_compra': detalle_compra}, request))
+# def detalle_compra(request):
+#     detalle_compra = Compra.objects.all()
+#     template = loader.get_template('detalle_compra.html')
+#     return HttpResponse(template.render({'detalle_compra': detalle_compra}, request))
+
+def detalle_compra(request, cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    compras = Compra.objects.filter(cliente=cliente).prefetch_related('muebles')
+    return render(request, 'detalle_compra.html', {
+        'cliente': cliente,
+        'compras': compras,
+    })
 
 
 

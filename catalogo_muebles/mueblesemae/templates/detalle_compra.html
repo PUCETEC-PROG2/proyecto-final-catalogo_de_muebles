@@ -3,7 +3,6 @@
 {% block content %}
     <p>{{cliente}}</p>
     <h2>Detalles de la compra:</h2>
-    <p>Cliente: {{cliente.name}}</p>
 
     <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -12,18 +11,43 @@
             <thead class="atributes">
                 <tr>
                     <th scope="col">mueble</th>
-                    <th scope="col">categoria</th>
+                    <th scope="col">cliente</th>
                     <th scope="col">precio</th>
+                    <th scope="col">precio individual</th>
+
+
                 </tr>
             </thead>
             <tbody>
-                {% for mueble in form.muebles.field.queryset %}
-
+                {% for compra in compras %}
                     <tr>
-                        <td>{{ mueble.name }}</td>
+                        <td>
+                            {% for mueble in compra.muebles.all %}
+                                {{ mueble.name }}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{cliente.name}}
+                        </td>
+
+                        <td>
+                            {{compra.total}}
+                        </td>
+
+                        <td>
+
+
+                            {% for mueble in compra.muebles.all %}
+                                {{mueble.cost}} , 
+                            {% endfor %}
+
+                            
+                        </td>
+
                     </tr>
-                {%endfor%}
+                {% endfor %}
             </tbody>
         </table>
     </form>
 {% endblock content %}
+
