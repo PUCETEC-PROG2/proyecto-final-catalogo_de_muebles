@@ -1,3 +1,3 @@
-function compra_toral(){
+function compra_seleccion(){
     
 }

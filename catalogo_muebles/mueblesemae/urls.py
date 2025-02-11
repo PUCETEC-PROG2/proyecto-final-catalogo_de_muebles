@@ -22,7 +22,7 @@ urlpatterns = [
     path("ingresar_compra/", views.ingresar_compra, name="ingresar_compra"),
     path("listar_compras/", views.listar_compras, name="listar_compras"),
     #DETALLE COMPRA
-    path("detalle_compra/", views.detalle_compra, name="detalle_compra"),
+    path('detalle_compra/<int:cliente_id>/<int:compra_id>/', views.detalle_compra, name='detalle_compra'),
     
     
     

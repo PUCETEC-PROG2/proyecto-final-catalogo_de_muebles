@@ -130,10 +130,14 @@ def ingresar_compra(request):
     
     return render(request, 'ingresar_compra.html', {'form': form})
 
-def detalle_compra(request):
-    detalle_compra = Compra.objects.all()
-    template = loader.get_template('detalle_compra.html')
-    return HttpResponse(template.render({'detalle_compra': detalle_compra}, request))
+#COMPRA - DETALLE
+def detalle_compra(request, cliente_id, compra_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    compra = Compra.objects.get(id=compra_id, cliente=cliente)  # Obtiene solo la compra específica
+    return render(request, 'detalle_compra.html', {
+        'cliente': cliente,
+        'compra': compra,
+    })
 
 
 

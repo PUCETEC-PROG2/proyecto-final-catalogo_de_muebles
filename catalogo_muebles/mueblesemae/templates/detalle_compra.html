@@ -1,29 +1,49 @@
 {% extends "base.html" %}
 {% block title %}{{cliente | capfirst}}{% endblock title %}
 {% block content %}
-    <p>{{cliente}}</p>
-    <h2>Detalles de la compra:</h2>
-    <p>Cliente: {{cliente.name}}</p>
+<h2>Detalles de la compra:</h2>
+<p>Cliente: {{cliente}}</p>
+<p>Fecha: {{compra.fecha}}</p>
 
+ 
     <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
+ 
         <table class="table">
             <thead class="atributes">
                 <tr>
-                    <th scope="col">mueble</th>
-                    <th scope="col">categoria</th>
-                    <th scope="col">precio</th>
+                    <th scope="col">MUEBLE</th>
+                    <th scope="col">PRECIO INDIVIDUAL</th>
+                    <th scope="col">PRECIO TOTAL</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                {% for mueble in form.muebles.field.queryset %}
-
                     <tr>
-                        <td>{{ mueble.name }}</td>
+                        <td>
+                            {% for mueble in compra.muebles.all %}
+                                {{ mueble.name }}
+                            {% endfor %}
+                        </td>
+                        
+                        <td>
+ 
+ 
+                            {% for mueble in compra.muebles.all %}
+                                {{mueble.cost}} ,
+                            {% endfor %}
+ 
+                           
+                        </td>
+
+                        <td>
+                            {{compra.total}}
+                        </td>
+ 
+ 
                     </tr>
-                {%endfor%}
             </tbody>
         </table>
     </form>
 {% endblock content %}
+ 
