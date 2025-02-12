@@ -35,17 +35,22 @@
                 {% for mueble in form.muebles.field.queryset %}
                     <tr>
                         <td>
-                            <input type="checkbox" name="{{ form.muebles.html_name }}" value="{{ mueble.id }}"
-                                {% if mueble in form.muebles.value %}checked{% endif %}>
+                            <input type="checkbox" name="{{ form.muebles.html_name }}" value="{{ mueble.cost }}"
+                                {% if mueble in form.muebles.value %}checked
+                                    
+                                {% endif %} class="product" onclick="calculateTotal()">
+                                
+
                         </td>
                         <td>{{ mueble.id }}</td>
                         <td>{{ mueble.name }}</td>
                         <td>{{ mueble.get_type_display }}</td>
+                        <td>{{ mueble.cost }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-
+        <h3>Total: $<span id="total">0</span></h3>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{% url "mueblesemae:listar_compras"  %}" class="btn btn-secondary">Regresar</a>

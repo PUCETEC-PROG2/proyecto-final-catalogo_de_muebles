@@ -27,10 +27,16 @@
                             <i class="fa-solid fa-pen-fancy"></i>
                         </a>
                         <!--icono BORRAR-->
-                        <a href="/delete_cliente/{{cliente.id}}" class="btn btn-danger">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </a>
-                    {% endif %} 
+                        <section>
+                            <a type="button" id ="borrar" onclick="" href="/delete_cliente/{{cliente.id}}" class="btn btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </section>
+
+                        {% endif %} 
+                        <section>
+                            <button type="button"> Mostrar </button>
+                        </section>
                 </div>
             </div>
         </div>        

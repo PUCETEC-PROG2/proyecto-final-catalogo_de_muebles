@@ -22,7 +22,7 @@ class Mueble(models.Model):
         ('I', 'Industrial'),
     )
     style = models.CharField(max_length=30, null = False, choices = MUEBLE_STYLES)
-    cost = models.DecimalField(decimal_places = 4, max_digits = 6, null=False, default=0)
+    cost = models.DecimalField(decimal_places = 2, max_digits = 6, null=False, default=0)
     picture = models.ImageField(upload_to="muebles_images")
     MUEBLE_TYPE = (
         ('O', 'Organizacion'),
