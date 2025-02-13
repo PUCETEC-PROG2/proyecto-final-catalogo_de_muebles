@@ -81,6 +81,7 @@ def delete_cliente(request, cliente_id):
 def add_mueble(request):
     if request.method == "POST": 
         form = MuebleForm(request.POST, request.FILES)
+        
         if form.is_valid():
             form.save()
             return redirect('mueblesemae:index')
