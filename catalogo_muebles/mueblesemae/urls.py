@@ -5,6 +5,7 @@ app_name = 'mueblesemae'
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("categoria_organizacion/", views.categoria_organizacion, name="categoria_organizacion"),
     path("clientes/", views.clientes, name="clientes"),
     path("cliente_tabla/", views.cliente_tabla, name="cliente_tabla"),
     path("cliente/<int:cliente_id>/", views.cliente_details, name="cliente_details"),

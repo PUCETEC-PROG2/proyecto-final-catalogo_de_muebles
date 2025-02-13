@@ -4,6 +4,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_div}}
+        {{form_categoria.as_div}}
         <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{% url "mueblesemae:index"  %}" class="btn btn-secondary">Regresar</a>

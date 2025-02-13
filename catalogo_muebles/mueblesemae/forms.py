@@ -2,7 +2,7 @@ from django import forms
 from .models import Mueble
 from .models import Cliente
 from .models import Compra
-
+from .models import Categoria
 
 class MuebleForm(forms.ModelForm):
     class Meta:
@@ -10,19 +10,20 @@ class MuebleForm(forms.ModelForm):
         fields = '__all__'
         labels = {
             'name': 'Nombre',
-            'type': 'Tipo',
             'material': 'Material',
             'style': 'Estilo',
             'picture': 'Imagen'
             
         }
+
+
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'type': forms.Select(attrs={'class': 'form-control'}),
             'material': forms.Select(attrs={'class': 'form-control'}),
             'style': forms.Select(attrs={'class': 'form-control'}),
             'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -60,3 +61,15 @@ class CompraForm(forms.ModelForm):
         widgets = {
             'fecha': forms.DateInput(attrs={'class': 'datepicker'}),
         }
+
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields =  ['type']
+        widgets = {
+                        'type': forms.Select(attrs={'class': 'form-control'}),
+                    }
+
+    
+    
+        

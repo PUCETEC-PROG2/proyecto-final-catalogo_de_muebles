@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-{% block title %}MUEBLESEMAE{% endblock title %}
+{% block title %}Pagina Inicial{% endblock title %}
 
 {% block content %}
-    <h2>Muebles</h2>
+    <h2>Categorias</h2>
     <div class="row">
-        {% for mueble  in muebles  %}
+        {% for mueble  in categorias.all %}
+        {%if categorias.id == 1%}
+        
         <div class="col-sm-3">
             <br>
             <div class="card">
@@ -12,7 +14,6 @@
                 <div class="card-body">
                     <h5 class="card-title">{{mueble | capfirst}}</h5>
                     <p class="card-text">Tipo: {{mueble.type}} </p>
-                    <p class="card-text">Tipo: {{form.categorias.type}} </p>
                     <!--icono VER-->
                     <a href="{{mueble.id}}" class="btn btn-primary">
                         <i class="fa-solid fa-eye"></i> <!--icono-->
@@ -29,11 +30,10 @@
                     {% endif %} 
                 </div>
             </div>
-        </div>        
+        </div>
+        {% endif %}         
         {% endfor %}
     </div>
 
-    <!--cliente-->
-    <br>
-    
+
 {% endblock content %}

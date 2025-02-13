@@ -24,13 +24,7 @@ class Mueble(models.Model):
     style = models.CharField(max_length=30, null = False, choices = MUEBLE_STYLES)
     cost = models.DecimalField(decimal_places = 2, max_digits = 6, null=False, default=0)
     picture = models.ImageField(upload_to="muebles_images")
-    MUEBLE_TYPE = (
-        ('O', 'Organizacion'),
-        ('H', 'Hool'),
-        ('C', 'Confort'),   
-    )
-    type = models.CharField(max_length=30, null=False, choices=MUEBLE_TYPE)
-    
+
     def __str__(self):
         return self.name
 
@@ -66,7 +60,23 @@ class Compra(models.Model):
     def __str__(self):
         return f"Compra {self.id} - {self.muebles.name}"
     
+##CATEGORIA
+
+class Categoria(models.Model):
+    MUEBLE_TYPE = (
+        ('O', 'Organizacion'),
+        ('H', 'Hool'),
+        ('C', 'Confort'),   
+    )
+    type = models.CharField(max_length=15, null=False, choices=MUEBLE_TYPE)
+    muebles_categoria =models.ManyToManyField(Mueble)
+
+
+    def __str__(self):
+        return self.type
+
     
+     
     
     
     

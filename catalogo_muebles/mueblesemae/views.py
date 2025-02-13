@@ -4,10 +4,13 @@ from django.shortcuts import redirect, render
 from .models import Mueble
 from .models import Cliente
 from .models import Compra
+from .models import Categoria
 
 from mueblesemae.forms import MuebleForm
 from mueblesemae.forms import ClienteForm
 from mueblesemae.forms import CompraForm
+from mueblesemae.forms import CategoriaForm
+
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
@@ -22,6 +25,14 @@ def index(request):
     return HttpResponse(template.render({
         'muebles': muebles,
         }, request))
+
+##MUEBLE-CATEGORIA
+def categoria_organizacion(request):
+    categorias = Categoria.objects.all()
+    template= loader.get_template('mueble_categoria.html')
+    return HttpResponse(template.render({
+        'categorias': categorias,
+    }, request))
 
 
 
@@ -86,12 +97,15 @@ def delete_cliente(request, cliente_id):
 def add_mueble(request):
     if request.method == "POST": 
         form = MuebleForm(request.POST, request.FILES)
-        if form.is_valid():
+        form_categoria = CategoriaForm(request.POST, request.FILES)
+        if form.is_valid() and form_categoria.is_valid():
             form.save()
+            # form_categoria.save()
             return redirect('mueblesemae:index')
     else:
-        form = MuebleForm()        
-    return render(request, 'mueble_form.html', {'form': form})
+        form = MuebleForm()  
+        form_categoria = CategoriaForm()      
+    return render(request, 'mueble_form.html', {'form': form, 'form_categoria': form_categoria})
 
 def edit_mueble(request, mueble_id):
     mueble =  Mueble.objects.get(id = mueble_id)
