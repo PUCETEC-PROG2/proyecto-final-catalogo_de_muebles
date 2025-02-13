@@ -23,6 +23,29 @@ def index(request):
         'muebles': muebles,
         }, request))
 
+##CATEGORIA ORGANIZACION
+def categoria_organizacion(request):
+    muebles = Mueble.objects.all()
+    template = loader.get_template('categoria_organizacion.html')
+    return HttpResponse(template.render({
+        'muebles': muebles,
+        }, request))
+
+##CATEGORIA HOOL
+def categoria_hool(request):
+    muebles = Mueble.objects.all()
+    template = loader.get_template('categoria_hool.html')
+    return HttpResponse(template.render({
+        'muebles': muebles,
+        }, request))
+
+##CATEGORIA CONFORT
+def categoria_confort(request):
+    muebles = Mueble.objects.all()
+    template = loader.get_template('categoria_confort.html')
+    return HttpResponse(template.render({
+        'muebles': muebles,
+        }, request))
 
 
 def mueble(request, mueble_id):

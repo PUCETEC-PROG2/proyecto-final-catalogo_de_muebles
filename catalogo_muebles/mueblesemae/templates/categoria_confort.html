@@ -4,8 +4,10 @@
 {% block content %}
     <h2>Muebles</h2>
     <div class="row">
-        {% for mueble  in muebles  %}     
-
+        {% for mueble  in muebles  %}
+            {% if mueble.type == "C" %}
+                
+            
             <div class="col-sm-3">
                 <br>
                 <div class="card">
@@ -29,7 +31,8 @@
                         {% endif %} 
                     </div>
                 </div>
-            </div>       
+            </div>  
+            {% endif %}      
         {% endfor %}
     </div>
 
