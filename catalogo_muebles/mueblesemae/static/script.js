@@ -12,32 +12,29 @@ function calculateTotal() {
 
   }
 
+//MENSAJE ALERTA
+// function confirmDelete() {
+//   var confirmacion = confirm("¿Estás seguro de que quieres eliminar esto?");
+  
 
-
-
-//MENSAJE DE ALERTA//
-// function mensaje_alerta(){
-//     window.alert("")
-//     if (botoneliminar = estapresionado){
-//         window.alert("¿Estas seguro de eliminar?")
-
-//     }
+//   if (confirmacion) {
+//       // Aquí va el código para eliminar el elemento, por ejemplo:
+//       alert("Elemento eliminado");
+//       // O el código real para eliminar un item, como hacer una solicitud o removerlo del DOM.
+//   } else {
+//       alert("Eliminación cancelada");
+//   }
 // }
 
+function confirmDelete(event) {
+  var confirmacion = confirm("¿Estás seguro de que quieres eliminar esto?");
 
-// function agregarevento() {   
-//     var elemento = document.querySelector("section > button"); 
-//     elemento.addEventListener("click", mostrarmensaje); 
-// } 
+  if (!confirmacion) {
+      // Si el usuario cancela, evita que el enlace se ejecute.
+      event.preventDefault();
+  } else {
+      // Si confirma, puedes permitir que el enlace haga su acción normal.
+      // Si quieres hacer algo diferente, como redirigir o hacer una acción AJAX, hazlo aquí.
+  }
+}
 
-
-// function mostrarmensaje() {   
-//     confirmacion = window.confirm("Presionó el botón"); 
-//     var btn_borrar = document.getElementById("borrar");
-//     if(confirmacion == true)
-//     {
-//         alert(btn_borrar)
-//     }
-    
-// } 
-// window.addEventListener("load", agregarevento);
