@@ -1,15 +1,20 @@
 function calculateTotal() {
-    var checkboxes = document.querySelectorAll('.product');
     var total = 0;
+    var checkboxes = document.querySelectorAll('.product');
   
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
-        total += parseFloat(checkboxes[i].value);
+        total += parseFloat(checkboxes[i].dataset.price);
       }
     }
   
     document.getElementById('total').textContent = total.toFixed(2);
+
   }
+
+
+
+
 //MENSAJE DE ALERTA//
 // function mensaje_alerta(){
 //     window.alert("")

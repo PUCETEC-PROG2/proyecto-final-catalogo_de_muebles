@@ -36,6 +36,7 @@
                     <tr>
                         <td>
                             <input type="checkbox" name="{{ form.muebles.html_name }}" value="{{ mueble.id }}"
+                                data-price="{{ mueble.cost }}"
                                 {% if mueble in form.muebles.value %}checked{% endif %} class="product" onclick="calculateTotal()">
                                 
 
