@@ -10,30 +10,29 @@ function calculateTotal() {
   
     document.getElementById('total').textContent = total.toFixed(2);
   }
-
 //MENSAJE DE ALERTA//
-function mensaje_alerta(){
-    window.alert("")
-    if (botoneliminar = estapresionado){
-        window.alert("¿Estas seguro de eliminar?")
+// function mensaje_alerta(){
+//     window.alert("")
+//     if (botoneliminar = estapresionado){
+//         window.alert("¿Estas seguro de eliminar?")
 
-    }
-}
-
-
-function agregarevento() {   
-    var elemento = document.querySelector("section > button"); 
-    elemento.addEventListener("click", mostrarmensaje); 
-} 
+//     }
+// }
 
 
-function mostrarmensaje() {   
-   confirmacion = window.confirm("Presionó el botón"); 
-    var btn_borrar = document.getElementById("borrar");
-    if(confirmacion == true)
-    {
-        alert(btn_borrar)
-    }
+// function agregarevento() {   
+//     var elemento = document.querySelector("section > button"); 
+//     elemento.addEventListener("click", mostrarmensaje); 
+// } 
+
+
+// function mostrarmensaje() {   
+//     confirmacion = window.confirm("Presionó el botón"); 
+//     var btn_borrar = document.getElementById("borrar");
+//     if(confirmacion == true)
+//     {
+//         alert(btn_borrar)
+//     }
     
-} 
-window.addEventListener("load", agregarevento);
+// } 
+// window.addEventListener("load", agregarevento);
