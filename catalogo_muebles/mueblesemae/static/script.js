@@ -12,20 +12,7 @@ function calculateTotal() {
 
   }
 
-//MENSAJE ALERTA
-// function confirmDelete() {
-//   var confirmacion = confirm("¿Estás seguro de que quieres eliminar esto?");
-  
-
-//   if (confirmacion) {
-//       // Aquí va el código para eliminar el elemento, por ejemplo:
-//       alert("Elemento eliminado");
-//       // O el código real para eliminar un item, como hacer una solicitud o removerlo del DOM.
-//   } else {
-//       alert("Eliminación cancelada");
-//   }
-// }
-
+  //Confirmacion Borrar
 function confirmDelete(event) {
   var confirmacion = confirm("¿Estás seguro de que quieres eliminar esto?");
 

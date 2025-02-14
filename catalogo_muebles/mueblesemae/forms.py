@@ -56,7 +56,7 @@ class CompraForm(forms.ModelForm):
 
     class Meta:
         model = Compra
-        fields = ['cliente', 'fecha', 'muebles', 'cantidad']
+        fields = ['cliente', 'fecha', 'muebles']
         widgets = {
             'fecha': forms.DateInput(attrs={'class': 'datepicker'}),
         }

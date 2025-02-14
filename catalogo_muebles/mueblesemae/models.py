@@ -54,7 +54,6 @@ class Compra(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     # mueble = models.ForeignKey(Mueble, on_delete=models.CASCADE) 
     fecha = models.DateField()
-    cantidad = models.IntegerField(null=False, default=0)
     muebles = models.ManyToManyField(Mueble)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     

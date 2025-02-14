@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect, render
+import random
 from .models import Mueble
 from .models import Cliente
 from .models import Compra
@@ -19,8 +20,44 @@ from django.contrib.auth.models import User
 def index(request):
     muebles = Mueble.objects.all()
     template = loader.get_template('index.html')
+    descripciones1 = [
+            "Elegancia y conciencia ecológica en un solo mueble.",
+            "Diseño moderno y sostenible, fabricado con materiales reciclados de alta calidad.",
+            "Estructura resistente y ecológica, ideal para un hogar comprometido con el planeta.",
+            "Un mueble funcional que combina estilo, durabilidad y responsabilidad ambiental.",
+            "Elaborado con madera y materiales reciclados para reducir el impacto ambiental.",
+            "Optimiza tu espacio con un diseño práctico y sustentable."
+    ]
+    descripcion_aleatoria1 = random.choice(descripciones1)
+
+    descripciones2 = [
+            "Elaborado con madera y materiales reciclados para reducir el impacto ambiental.",
+            "Estructura resistente y ecológica, ideal para un hogar comprometido con el planeta.",
+            "Diseño moderno y sostenible, fabricado con materiales reciclados de alta calidad.",
+            "Un mueble funcional que combina estilo, durabilidad y responsabilidad ambiental.",
+            "Optimiza tu espacio con un diseño práctico y sustentable.",
+            "Elegancia y conciencia ecológica en un solo mueble."
+    ]
+    descripcion_aleatoria2 = random.choice(descripciones2)
+
+    descripciones3 = [
+            "Estructura resistente y ecológica, ideal para un hogar comprometido con el planeta.",
+            "Diseño moderno y sostenible, fabricado con materiales reciclados de alta calidad.",
+            "Un mueble funcional que combina estilo, durabilidad y responsabilidad ambiental.",
+            "Optimiza tu espacio con un diseño práctico y sustentable.",
+            "Elaborado con madera y materiales reciclados para reducir el impacto ambiental.",
+            "Elegancia y conciencia ecológica en un solo mueble."
+    ]
+    descripcion_aleatoria3 = random.choice(descripciones3)
+
+ 
+    
     return HttpResponse(template.render({
-        'muebles': muebles,
+        'descripcion1': descripcion_aleatoria1,
+        'descripcion2': descripcion_aleatoria2,
+        'descripcion3': descripcion_aleatoria3,
+        
+        'muebles': muebles
         }, request))
 
 ##CATEGORIA ORGANIZACION

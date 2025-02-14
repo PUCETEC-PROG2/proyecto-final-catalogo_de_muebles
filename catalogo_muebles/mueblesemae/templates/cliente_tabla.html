@@ -3,6 +3,12 @@
 
 {% block content %}
     <h2>Tabla Clientes</h2>
+    
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="{% url "mueblesemae:add_cliente" %}">Añadir cliente
+        <i class="fa-solid fa-circle-plus"></i>
+    </a>
+    {% endif %}
 
             <table class="table">
                 <thead class="atributes">
