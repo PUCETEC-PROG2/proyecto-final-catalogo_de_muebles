@@ -1,20 +1,16 @@
 {% extends "base.html" %}
-{% block title  %} Ingreso nueva compra {% endblock title  %}
+{% block title  %} Ingresar compra {% endblock title  %}
 {% block content %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        
-
         <div class="mb-3">
             <label for="id_cliente">Cliente:</label>
             {{ form.cliente }}
         </div>
-
         <div class="mb-3">
             <label for="id_fecha">Fecha:</label>
             {{ form.fecha }}
         </div>
-
         <br>
         <table class="table">
             <thead class="atributes">
@@ -33,8 +29,6 @@
                             <input type="checkbox" name="{{ form.muebles.html_name }}" value="{{ mueble.id }}"
                                 data-price="{{ mueble.cost }}"
                                 {% if mueble in form.muebles.value %}checked{% endif %} class="product" onclick="calculateTotal()">
-                                
-
                         </td>
                         <td>{{ mueble.id }}</td>
                         <td>{{ mueble.name }}</td>
@@ -45,7 +39,6 @@
             </tbody>
         </table>
         <h3>Total: $<span id="total">0</span></h3>
-
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{% url "mueblesemae:listar_compras"  %}" class="btn btn-secondary">Regresar</a>
     </form>

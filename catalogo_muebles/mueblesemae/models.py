@@ -8,10 +8,10 @@ class Mueble(models.Model):
     name = models.CharField(max_length=15, null=False)
     MUEBLE_MATERIALS = (
         ('M', 'Madera Sostenible'),
-        ('B', 'Bambu'),
-        ('E', 'Eco-plasticos'),
+        ('B', 'Bambú'),
+        ('E', 'Eco-plásticos'),
         ('C', 'Corcho'),
-        ('L', 'Lino Orgonico'),
+        ('L', 'Lino Orgánico'),
         ('F', 'Fibras de Coco'),    
     )
     material = models.CharField(max_length=30, null=False, choices=MUEBLE_MATERIALS)
@@ -25,7 +25,7 @@ class Mueble(models.Model):
     cost = models.DecimalField(decimal_places = 2, max_digits = 6, null=False, default=0)
     picture = models.ImageField(upload_to="muebles_images")
     MUEBLE_TYPE = (
-        ('O', 'Organizacion'),
+        ('O', 'Organización'),
         ('H', 'Hool'),
         ('C', 'Confort'),   
     )

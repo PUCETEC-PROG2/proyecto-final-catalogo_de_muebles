@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block title  %} {{mueble | capfirst}} {% endblock title  %}
 {% block content %}
-    <h2>Caracteristicas</h2>
-
-    
+    <h2>Características</h2>
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
@@ -17,9 +15,8 @@
                         <li>Material: {{mueble.get_material_display}}</li>
                         <li>Estilo: {{mueble.get_style_display}}</li>
                     </ul>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
+    </div>
 {% endblock content %}

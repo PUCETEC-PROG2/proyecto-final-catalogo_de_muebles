@@ -46,9 +46,6 @@ def index(request):
             "Elegancia y conciencia ecológica en un solo mueble."
     ]
     descripcion_aleatoria3 = random.choice(descripciones3)
-
- 
-    
     return HttpResponse(template.render({
         'descripcion1': descripcion_aleatoria1,
         'descripcion2': descripcion_aleatoria2,

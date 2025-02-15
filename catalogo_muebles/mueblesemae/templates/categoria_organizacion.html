@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-{% block title %}MUEBLESEMAE{% endblock title %}
-
+{% block title %}Organización{% endblock title %}
 {% block content %}
-    <h1>ORGANIZACION</h1>
+    <h1>ORGANIZACIÓN</h1>
     <div class="row justify-content-center">
         {% for mueble  in muebles  %}
             {% if mueble.type == "O" %}
@@ -34,8 +33,5 @@
             {% endif %}      
         {% endfor %}
     </div>
-
-    <!--cliente-->
-    <br>
-    
+    <br>   
 {% endblock content %}
