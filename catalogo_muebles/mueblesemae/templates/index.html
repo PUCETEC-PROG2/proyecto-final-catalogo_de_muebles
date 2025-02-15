@@ -2,10 +2,25 @@
 {% block title %}MUEBLESEMAE{% endblock title %}
 
 {% block content %}
-    <h2>Destacados</h2>
-    <div class="row">
-        {% for mueble  in muebles  %}     
+<center>
 
+    <h1>DESTACADO</h1>
+</center>
+    <div class="row justify-content-center">
+
+        <div class="row row-cols-1 row-cols-md-1 g-2">
+            <div class="col">
+            <div class="card">
+                <img src="https://tse3.mm.bing.net/th?id=OIG4.5cG8e8z4KYtgbOLejW18&pid=ImgGn" class="card-img-top" style="width: 60rem; height: 37rem;" alt="...">
+            </div>
+            <hr>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+
+        {% for mueble  in muebles  %}     
             <div class="col-sm-3">
                 <br>
                 <div class="card">

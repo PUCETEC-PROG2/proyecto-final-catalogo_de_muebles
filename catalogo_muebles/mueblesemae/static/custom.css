@@ -13,14 +13,14 @@
     right: 0;
 }
 .main{
-    padding-top: calc(17rem + 1rem); 
+    padding-top: calc(14rem + 1rem); 
 }
 .logo{
     width: 100%;    /* Mantiene la proporción */
     position: sticky;
     max-width: 3000px;
     height: auto;
-    max-height: 12rem;
+    max-height: 9rem;
     padding: 0rem;
 } 
 
@@ -66,6 +66,10 @@ div.barra.p-0 ul li :hover{
     height: 4rem;
     text-align: center;
 } 
+
+
+
+
 /* i.fa-solid.fa-bars{
     font-size: 2rem;
 } */

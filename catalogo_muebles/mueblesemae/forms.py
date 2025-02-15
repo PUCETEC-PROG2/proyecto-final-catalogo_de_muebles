@@ -13,6 +13,7 @@ class MuebleForm(forms.ModelForm):
             'type': 'Tipo',
             'material': 'Material',
             'style': 'Estilo',
+            'cost': 'Precio',
             'picture': 'Imagen'
             
         }
